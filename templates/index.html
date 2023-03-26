@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screen Sharing App | Noufal Rahman</title>
+  <meta name="title" content="Screen Sharing App" />
+  <meta name="description" content="You can share your screen across your network" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      background-color: black;
+      min-height: 100vh;
+      width: 100%;
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src='{{ url_for("static", filename="snip.webp") }}' id="image" alt="screenshot" />
+  </div>
+  <script>
+    var ImagePreview = document.getElementById('image');
+    var refreshInterval = 300;
+    var img = new Image()
+    function LoadImage() {
+      setTimeout(function () {
+        img.src = '{{ url_for("static", filename="snip.webp") }}?rand=' + Math.random();
+      }, refreshInterval);
+    }
+    img.onload = () => {
+    //   fetch('{{ url_for("static", filename="snip.webp") }}').then(res => {
+    //     if (res.status == 200) {
+          ImagePreview.src = img.src
+          LoadImage()
+          refreshInterval = 300
+    //       LoadImage()
+    //     } else {
+          // refreshInterval = 50;
+          // LoadImage()
+        // }
+      // })
+    }
+    img.onerror = () => {
+      refreshInterval = 50
+      LoadImage()
+    }
+    LoadImage()
+  </script>
+</body>
+</html>
