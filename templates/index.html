@@ -39,17 +39,9 @@
       }, refreshInterval);
     }
     img.onload = () => {
-    //   fetch('{{ url_for("static", filename="snip.webp") }}').then(res => {
-    //     if (res.status == 200) {
-          ImagePreview.src = img.src
-          LoadImage()
-          refreshInterval = 300
-    //       LoadImage()
-    //     } else {
-          // refreshInterval = 50;
-          // LoadImage()
-        // }
-      // })
+      ImagePreview.src = img.src
+      LoadImage()
+      refreshInterval = 300
     }
     img.onerror = () => {
       refreshInterval = 50
