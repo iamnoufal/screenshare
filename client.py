@@ -7,4 +7,5 @@ def home():
   return render_template('index.html')
 
 if __name__ == "__main__":
+  print("Serving snips from static/snip.webp")
   app.run(host='0.0.0.0', debug=True) 

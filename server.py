@@ -8,6 +8,7 @@ def take_snip(job):
   snip.save("static/snip.webp")
 
 if __name__ == '__main__':
+  print("Taking snips to static/snip.webp")
   job = sched.scheduler(time.time, time.sleep)
   job.enter(0.5, 1, take_snip, (job,))
   job.run()
